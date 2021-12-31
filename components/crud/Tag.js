@@ -82,9 +82,9 @@ const Tag = () => {
         setValues({
           ...values,
           error: false,
-          success: false,
+          success: true,
           name: '',
-          removed: !removed,
+          removed: false,
           reload: !reload,
         });
       }
@@ -126,7 +126,7 @@ const Tag = () => {
   const newTagFom = () => (
     <form onSubmit={clickSubmit}>
       <div className="form-group">
-        <label className="text-muted">Name</label>
+        <label className="text-muted">Enter new Tag</label>
         <input
           type="text"
           className="form-control"

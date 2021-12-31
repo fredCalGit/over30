@@ -111,7 +111,7 @@ const Category = () => {
 
   const showError = () => {
     if (error) {
-      return <p className="text-danger">Category already exist</p>;
+      return <p className="text-danger">Category already exists</p>;
     }
   };
 
@@ -128,7 +128,7 @@ const Category = () => {
   const newCategoryFom = () => (
     <form onSubmit={clickSubmit}>
       <div className="form-group">
-        <label className="text-muted">Name</label>
+        <label className="text-muted">Enter new Category</label>
         <input
           type="text"
           className="form-control"

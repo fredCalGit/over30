@@ -17,24 +17,6 @@ const Blogs = ({
   blogSkip,
   router,
 }) => {
-  const [limit, setLimit] = useState(blogsLimit);
-  const [skip, setSkip] = useState(0);
-  const [size, setSize] = useState(totalBlogs);
-  const [loadedBlogs, setLoadedBlogs] = useState([]);
-
-  const loadMore = () => {
-    let toSkip = skip + limit;
-    listBlogsWithCategoriesAndTags(toSkip, limit).then((data) => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setLoadedBlogs([...loadedBlogs, ...data.blogs]);
-        setSize(data.size);
-        setSkip(toSkip);
-      }
-    });
-  };
-
   const head = () => (
     <Head>
       <title> Programming blogs | {APP_NAME}</title>
@@ -69,6 +51,25 @@ const Blogs = ({
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
     </Head>
   );
+
+  const [limit, setLimit] = useState(blogsLimit);
+  const [skip, setSkip] = useState(0);
+  const [size, setSize] = useState(totalBlogs);
+  const [loadedBlogs, setLoadedBlogs] = useState([]);
+
+  const loadMore = () => {
+    let toSkip = skip + limit;
+    listBlogsWithCategoriesAndTags(toSkip, limit).then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setLoadedBlogs([...loadedBlogs, ...data.blogs]);
+        setSize(data.size);
+        setSkip(toSkip);
+      }
+    });
+  };
+
   const showAllCategories = () => {
     return categories.map((categ, i) => (
       <Link href={`/categories/${categ.slug}`} key={i}>
